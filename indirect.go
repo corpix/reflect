@@ -4,14 +4,6 @@ import (
 	"reflect"
 )
 
-type Value = reflect.Value
-type Type = reflect.Type
-
-var (
-	ValueOf = reflect.ValueOf
-	TypeOf  = reflect.TypeOf
-)
-
 func IndirectValue(reflectValue Value) Value {
 	if reflectValue.Kind() == reflect.Ptr {
 		return reflectValue.Elem()
