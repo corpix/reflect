@@ -4,6 +4,14 @@ import (
 	"reflect"
 )
 
+func Indirect(v interface{}) interface{} {
+	if v == nil {
+		return nil
+	}
+
+	return IndirectValue(reflect.ValueOf(v)).Interface()
+}
+
 func IndirectValue(reflectValue Value) Value {
 	if reflectValue.Kind() == reflect.Ptr {
 		return reflectValue.Elem()
@@ -12,7 +20,11 @@ func IndirectValue(reflectValue Value) Value {
 }
 
 func IndirectType(reflectType Type) Type {
-	if reflectType.Kind() == reflect.Ptr || reflectType.Kind() == reflect.Slice {
+	if reflectType == TypeInvalid {
+		return TypeInvalid
+	}
+
+	if reflectType.Kind() == reflect.Ptr {
 		return reflectType.Elem()
 	}
 	return reflectType
