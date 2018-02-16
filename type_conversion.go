@@ -74,14 +74,6 @@ func ConvertToType(v interface{}, t Type) (interface{}, error) {
 
 			return res.Interface(), nil
 		}
-	case Ptr:
-		switch t.Kind() {
-		case Ptr:
-			return ConvertToType(
-				vv.Elem().Interface(),
-				t.Elem(),
-			)
-		}
 	}
 
 	switch t {
