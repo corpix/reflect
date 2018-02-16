@@ -14,6 +14,10 @@ func ConvertToType(v interface{}, t Type) (interface{}, error) {
 		err error
 	)
 
+	if t.Kind() == Interface {
+		return v, nil
+	}
+
 	switch tt.Kind() {
 	case Slice:
 		switch t.Kind() {

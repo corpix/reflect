@@ -4,6 +4,8 @@ import (
 	"reflect"
 )
 
+type Kind = reflect.Kind
+
 const (
 	Invalid       = reflect.Invalid
 	Bool          = reflect.Bool
