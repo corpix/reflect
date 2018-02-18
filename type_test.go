@@ -52,10 +52,11 @@ func TestParseType(t *testing.T) {
 			sample.name,
 			func(t *testing.T) {
 				var (
-					tt Type
+					tt  Type
+					err error
 				)
 				for k, v := range sample.input {
-					tt = ParseType(v)
+					tt, err = ParseType(v)
 					assert.Equal(
 						t,
 						sample.output[k],
@@ -65,6 +66,7 @@ func TestParseType(t *testing.T) {
 							sample.output[k].String(),
 						),
 					)
+					assert.Equal(t, nil, err)
 				}
 			},
 		)
