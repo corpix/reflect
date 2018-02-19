@@ -138,6 +138,9 @@ func ConvertToBool(vv interface{}) (bool, error) {
 		}
 		return false, nil
 	case string:
+		if value == "" {
+			return false, nil
+		}
 		return strconv.ParseBool(value)
 	default:
 		return false, NewErrCanNotConvertType(
@@ -192,6 +195,9 @@ func ConvertToInt(vv interface{}) (int, error) {
 	case uintptr:
 		return int(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseInt(value, 0, 0)
 		if err == nil {
 			return int(res), nil
@@ -200,6 +206,7 @@ func ConvertToInt(vv interface{}) (int, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeInt,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -256,6 +263,9 @@ func ConvertToInt8(vv interface{}) (int8, error) {
 	case uintptr:
 		return int8(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseInt(value, 0, 8)
 		if err == nil {
 			return int8(res), nil
@@ -264,6 +274,7 @@ func ConvertToInt8(vv interface{}) (int8, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeInt8,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -320,6 +331,9 @@ func ConvertToInt16(vv interface{}) (int16, error) {
 	case uintptr:
 		return int16(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseInt(value, 0, 16)
 		if err == nil {
 			return int16(res), nil
@@ -328,6 +342,7 @@ func ConvertToInt16(vv interface{}) (int16, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeInt16,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -384,6 +399,9 @@ func ConvertToInt32(vv interface{}) (int32, error) {
 	case uintptr:
 		return int32(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseInt(value, 0, 32)
 		if err == nil {
 			return int32(res), nil
@@ -392,6 +410,7 @@ func ConvertToInt32(vv interface{}) (int32, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeInt32,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -448,6 +467,9 @@ func ConvertToInt64(vv interface{}) (int64, error) {
 	case uintptr:
 		return int64(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseInt(value, 0, 64)
 		if err == nil {
 			return int64(res), nil
@@ -456,6 +478,7 @@ func ConvertToInt64(vv interface{}) (int64, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeInt64,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -512,6 +535,9 @@ func ConvertToUint(vv interface{}) (uint, error) {
 	case uintptr:
 		return uint(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseUint(value, 0, 0)
 		if err == nil {
 			return uint(res), nil
@@ -520,6 +546,7 @@ func ConvertToUint(vv interface{}) (uint, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeUint,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -576,6 +603,9 @@ func ConvertToUint8(vv interface{}) (uint8, error) {
 	case uintptr:
 		return uint8(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseUint(value, 0, 8)
 		if err == nil {
 			return uint8(res), nil
@@ -584,6 +614,7 @@ func ConvertToUint8(vv interface{}) (uint8, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeUint8,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -640,6 +671,9 @@ func ConvertToUint16(vv interface{}) (uint16, error) {
 	case uintptr:
 		return uint16(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseUint(value, 0, 16)
 		if err == nil {
 			return uint16(res), nil
@@ -648,6 +682,7 @@ func ConvertToUint16(vv interface{}) (uint16, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeUint16,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -705,6 +740,9 @@ func ConvertToUint32(vv interface{}) (uint32, error) {
 	case uintptr:
 		return uint32(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseUint(value, 0, 32)
 		if err == nil {
 			return uint32(res), nil
@@ -713,6 +751,7 @@ func ConvertToUint32(vv interface{}) (uint32, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeUint32,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -769,6 +808,9 @@ func ConvertToUint64(vv interface{}) (uint64, error) {
 	case uintptr:
 		return uint64(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseUint(value, 0, 64)
 		if err == nil {
 			return uint64(res), nil
@@ -777,6 +819,7 @@ func ConvertToUint64(vv interface{}) (uint64, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeUint64,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -833,6 +876,9 @@ func ConvertToFloat32(vv interface{}) (float32, error) {
 	case uintptr:
 		return float32(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseFloat(value, 32)
 		if err == nil {
 			return float32(res), nil
@@ -841,6 +887,7 @@ func ConvertToFloat32(vv interface{}) (float32, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeFloat32,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -897,6 +944,9 @@ func ConvertToFloat64(vv interface{}) (float64, error) {
 	case uintptr:
 		return float64(value), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseFloat(value, 32)
 		if err == nil {
 			return float64(res), nil
@@ -905,6 +955,7 @@ func ConvertToFloat64(vv interface{}) (float64, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeFloat64,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -961,6 +1012,9 @@ func ConvertToComplex64(vv interface{}) (complex64, error) {
 	case uintptr:
 		return complex64(complex(float32(value), 0)), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseFloat(value, 32)
 		if err == nil {
 			return complex64(complex(float32(res), 0)), nil
@@ -969,6 +1023,7 @@ func ConvertToComplex64(vv interface{}) (complex64, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeComplex64,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil
@@ -1025,6 +1080,9 @@ func ConvertToComplex128(vv interface{}) (complex128, error) {
 	case uintptr:
 		return complex128(complex(float32(value), 0)), nil
 	case string:
+		if value == "" {
+			return 0, nil
+		}
 		res, err = strconv.ParseFloat(value, 32)
 		if err == nil {
 			return complex128(complex(float32(res), 0)), nil
@@ -1033,6 +1091,7 @@ func ConvertToComplex128(vv interface{}) (complex128, error) {
 			v,
 			reflect.TypeOf(vv),
 			TypeComplex128,
+			err.Error(),
 		)
 	case nil:
 		return 0, nil

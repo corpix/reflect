@@ -2,11 +2,10 @@
     "mounts": {
         "rw": [
             ".",
-            "~/.emacs.d"
+            "~/.emacs.d",
+            "~/.spacemacs"
         ],
         "ro": [
-            "~/.spacemacs",
-            "~/.config/fish",
             "~/.gitconfig"
         ],
         "tmpfs": ["~"]
